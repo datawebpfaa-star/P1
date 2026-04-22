@@ -1,160 +1,112 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Farewell Party - Invictos</title>
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Invictos Premium</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:radial-gradient(circle at top,#1a1a1a,#000);color:white;overflow:hidden}
 
-    body {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      overflow-x: hidden;
-    }
+/* PARTICLES */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.p{position:absolute;width:3px;height:3px;background:gold;border-radius:50%;opacity:.6;animation:float 10s linear infinite}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
 
-    /* Opening Screen */
-    .opening {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(135deg, #1c1c1c, #000);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 999;
-      animation: fadeOut 2s ease 3s forwards;
-    }
+/* Opening */
+.opening{position:fixed;width:100%;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#000,#111);z-index:10;text-align:center}
+.opening img{width:90px;margin-bottom:15px;border-radius:50%;box-shadow:0 0 20px gold}
+.opening h1{font-size:2.8rem;color:gold;text-shadow:0 0 25px gold}
+.opening p{margin:15px 0;opacity:.8}
 
-    .opening h1 {
-      font-size: 2.5rem;
-      letter-spacing: 3px;
-      color: gold;
-      animation: zoomIn 1.5s ease;
-    }
+.btn{padding:14px 28px;background:linear-gradient(45deg,gold,#ffd700);border:none;border-radius:30px;font-weight:bold;cursor:pointer;box-shadow:0 0 20px gold}
 
-    @keyframes zoomIn {
-      from {transform: scale(0); opacity: 0;}
-      to {transform: scale(1); opacity: 1;}
-    }
+/* Main */
+.main{display:none;height:100vh;overflow:auto;padding:20px;text-align:center;position:relative;z-index:2}
+.show{animation:openAnim 1.2s ease forwards}
+@keyframes openAnim{from{opacity:0;transform:scale(.8) translateY(80px)}to{opacity:1;transform:scale(1) translateY(0)}}
 
-    @keyframes fadeOut {
-      to {opacity: 0; visibility: hidden;}
-    }
+.card{max-width:420px;margin:auto;padding:25px;border-radius:20px;background:linear-gradient(145deg,#111,#1c1c1c);box-shadow:0 0 40px rgba(255,215,0,.3);position:relative}
 
-    /* Main Content */
-    .container {
-      text-align: center;
-      padding: 30px;
-      animation: fadeIn 2s ease;
-    }
+.logo{position:absolute;top:-15px;right:-15px;width:80px}
 
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(30px);} 
-      to {opacity:1; transform: translateY(0);} 
-    }
+h2{font-size:2.2rem;letter-spacing:2px}
+.gold{color:gold;text-shadow:0 0 15px gold}
+.subtitle{font-style:italic;color:gold;margin:10px 0}
+.date{margin:15px 0;font-size:1.2rem}
+.circle{display:inline-block;padding:10px 18px;border-radius:50%;border:2px solid gold;color:gold;margin:0 10px}
+.info{margin-top:15px;opacity:.9}
 
-    .card {
-      max-width: 400px;
-      margin: auto;
-      background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,255,255,0.03));
-      border-radius: 20px;
-      padding: 20px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 25px rgba(255,215,0,0.3);
-      border: 1px solid rgba(255,215,0,0.2);
-    }
+.actions{margin-top:20px}
+.actions a{display:block;margin:10px auto;padding:12px;width:80%;border-radius:30px;background:linear-gradient(45deg,gold,#ffcc00);color:black;text-decoration:none;font-weight:bold;box-shadow:0 0 15px gold}
 
-    .card img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      color: gold;
-      margin-bottom: 10px;
-    }
-
-    .date {
-      font-size: 1.2rem;
-      margin: 10px 0;
-    }
-
-    .info {
-      margin-top: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      border-radius: 30px;
-      background: gold;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #fff;
-      transform: scale(1.1);
-    }
-
-    footer {
-      margin-top: 20px;
-      font-size: 0.8rem;
-      opacity: 0.6;
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <!-- Opening Animation -->
-  <div class="opening">
-    <h1>INVITATION</h1>
-    <p>Loading Event...</p>
-  </div>
+<!-- particles -->
+<div id="particles"></div>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="card">
-      <!-- Logo SMK -->
-      <img src="logo-smk.png" alt="Logo SMK" style="width:80px; margin-bottom:10px;">
+<!-- Opening -->
+<div class="opening" id="open">
+  <img src="logo.jpg" alt="logo">
+  <h1>DIUNDANG</h1>
+  <p>Employee Farewell Party Invictos<br>Untuk Alumni & Umum</p>
+  <button class="btn" onclick="buka()">Buka Undangan</button>
+</div>
 
-      <!-- Background emblem (blur effect) -->
-      <img src="logo-bg.png" alt="Background Logo" style="position:absolute; width:300px; opacity:0.08; top:50%; left:50%; transform:translate(-50%,-50%); z-index:0;">
-      <img src="https://ibb.co.com/jvK1W9K8" alt="Undangan">
+<!-- Main -->
+<div class="main" id="main">
+  <div class="card">
 
-      <h2>Employee Farewell Party</h2>
-      <p>Invictos</p>
+    <img src="logo.jpg" class="logo">
 
-      <div class="date">
-        Kamis, 30 April 2026
-      </div>
+    <p style="opacity:.6">YOU ARE INVITED TO</p>
 
-      <p>Untuk:<br>Alumni SMKN 1 Enam Lingkung & Umum</p>
+    <h2>EMPLOYEE</h2>
+    <h2>FAREWELL</h2>
 
-      <div class="info">
-        <p>⏰ 10.00 - 18.00 WIB</p>
-        <p>📍 SMKN 1 Enam Lingkung</p>
-      </div>
+    <div class="subtitle">Party</div>
 
-      <!-- Buttons -->
-      <a href="https://share.google/sFpRhoeeWguSSePwk" class="btn" target="_blank">📍 Lokasi</a>
+    <h3 class="gold">INVICTOS</h3>
 
-      <a href="#" class="btn" onclick="alert('Acara dimulai pukul 10.00 WIB sampai 18.00 WIB')">⏰ Lihat Waktu</a>
-
-      <footer>
-        Created by Faa
-      </footer>
+    <div class="date">
+      KAMIS <span class="circle">30</span> APRIL 2026
     </div>
+
+    <p>TO:</p>
+    <p>ALUMNI SMKN 1 ENAM LINGKUNG & UMUM</p>
+
+    <div class="info">
+      📍 SMKN 1 ENAM LINGKUNG<br>
+      ⏰ 10.00 - 18.00 WIB
+    </div>
+
+    <div class="actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=SMKN+1+Enam+Lingkung" target="_blank">📍 Buka Lokasi</a>
+    </div>
+
   </div>
+</div>
+
+<script>
+function buka(){
+  document.getElementById('open').style.display='none';
+  let main=document.getElementById('main');
+  main.style.display='block';
+  main.classList.add('show');
+  document.body.style.overflow='auto';
+}
+
+// generate particles
+for(let i=0;i<60;i++){
+  let p=document.createElement('div');
+  p.className='p';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=(5+Math.random()*10)+'s';
+  document.getElementById('particles').appendChild(p);
+}
+</script>
 
 </body>
 </html>
